@@ -1,0 +1,14 @@
+# Merge these settings into the ACTIVE postgresql.conf.
+# Create the directory first and grant write access to the PostgreSQL OS account.
+# Example directory: /var/lib/postgresql/wal_archive
+wal_level = replica
+archive_mode = on
+archive_command = 'test ! -f /var/lib/postgresql/wal_archive/%f && cp %p /var/lib/postgresql/wal_archive/%f'
+
+# PITR settings below are examples for a RESTORED base backup only.
+# Replace the target time with a timestamp recorded before the incident.
+# Uncomment only during the recovery exercise:
+# restore_command = 'cp /var/lib/postgresql/wal_archive/%f %p'
+# recovery_target_time = '2026-10-14 09:00:00+03'
+# recovery_target_action = 'pause'
+# Create recovery.signal in the restored data directory when initiating PITR.
