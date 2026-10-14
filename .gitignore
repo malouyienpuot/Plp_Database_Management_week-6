@@ -1,0 +1,13 @@
+# Never commit database backups or WAL files
+*.dump
+*.backup
+*.sql.gz
+*.tar
+*.tar.gz
+backups/
+wal_archive/
+base/
+standby/
+.env
+*.pem
+*.key
